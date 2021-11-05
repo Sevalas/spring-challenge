@@ -5,7 +5,7 @@ import java.util.UUID;
 
 public class TaskDTO implements Serializable {
 
-    private final String id;
+    private String id;
     private String reporterName;
     private String assigneeName;
     private String creationDate;
