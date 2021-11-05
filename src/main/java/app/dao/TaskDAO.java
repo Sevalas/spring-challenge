@@ -15,7 +15,6 @@ import java.util.Map;
 public class TaskDAO  {
 
     private final SavedTask savedTask;
-    private final static Utils utils = new Utils();;
     private final static ObjectMapper objectMapper = new ObjectMapper();
 
     public TaskDAO() {
@@ -63,6 +62,7 @@ public class TaskDAO  {
         ResponseModel responseModel;
         TaskDTO task = savedTask.selectSavedTaskById(taskId);
         if(task == null){
+            taskId = taskId == null ? Constants.EMPTY_STRING : taskId;
             responseModel = new ResponseModel(Constants.TASK_NOT_FOUND_CODE,
                     Constants.TASK_NOT_FOUND_MESSAGE.replace("{taskId}",taskId), TaskDTO.class.getSimpleName(),
                     task, Constants.NO_EXCEPTION);
@@ -119,7 +119,7 @@ public class TaskDAO  {
         return responseModel;
     }
 
-    public boolean isAnyAttributeOfTaskNullOrEmpty(TaskDTO task){
+    private boolean isAnyAttributeOfTaskNullOrEmpty(TaskDTO task){
         List<String> taskStringFieldList = Arrays.asList(task.getReporterName(), task.getAssigneeName(),
                 task.getCreationDate(), task.getUpdateDate(), task.getTitle(), task.getDescription(), task.getStatus());
         return taskStringFieldList.contains(null) || taskStringFieldList.contains(Constants.EMPTY_STRING);

@@ -45,18 +45,18 @@ public class SavedTask {
     }
 
     public TaskDTO updateSavedTask(String taskId, TaskDTO modifiedTask) {
-        List<TaskDTO> modifiedSavedTaskList = new ArrayList<>();
         if(isTaskPresent(taskId)){
             for(TaskDTO task : savedTasks) {
-                if(taskId.equals(task.getId()))
-                task.setReporterName(modifiedTask.getReporterName());
-                task.setAssigneeName(modifiedTask.getAssigneeName());
-                task.setCreationDate(modifiedTask.getCreationDate());
-                task.setUpdateDate(modifiedTask.getUpdateDate());
-                task.setTitle(modifiedTask.getTitle());
-                task.setDescription(modifiedTask.getDescription());
-                task.setStatus(modifiedTask.getStatus());
-                return selectSavedTaskById(task.getId());
+                if(taskId.equals(task.getId())) {
+                    task.setReporterName(modifiedTask.getReporterName());
+                    task.setAssigneeName(modifiedTask.getAssigneeName());
+                    task.setCreationDate(modifiedTask.getCreationDate());
+                    task.setUpdateDate(modifiedTask.getUpdateDate());
+                    task.setTitle(modifiedTask.getTitle());
+                    task.setDescription(modifiedTask.getDescription());
+                    task.setStatus(modifiedTask.getStatus());
+                    return selectSavedTaskById(task.getId());
+                }
             }
         }
         return null;
@@ -74,7 +74,7 @@ public class SavedTask {
             savedTasks = modifiedSavedTaskList;
             return true;
         }
-        return null;
+        return false;
     }
 
     private boolean isTaskPresent (String taskId){

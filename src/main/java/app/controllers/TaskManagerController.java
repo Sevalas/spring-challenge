@@ -13,17 +13,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import app.db.SavedTask;
-
 import java.util.Map;
 
 @RestController
 @RequestMapping("/task-manager")
 public class TaskManagerController {
 
-	private final static SavedTask savedTask = new SavedTask();
 	private final static TaskDAO TaskDAO = new TaskDAO();
-	private final static Utils utils = new Utils();
 
 	/**
 	 * Method to create tasks.
@@ -37,7 +33,7 @@ public class TaskManagerController {
 		try {
 			responseModel = TaskDAO.addTask(bodyRequest);
 		} catch (Exception e) {
-			responseModel = utils.responseModelUnexpectedErrorHandler(e);
+			responseModel = Utils.responseModelUnexpectedErrorHandler(e);
 		}
 		return responseModel;
 	}
@@ -53,7 +49,7 @@ public class TaskManagerController {
 		try {
 			responseModel = TaskDAO.getListOfTask();
 		} catch (Exception e) {
-			responseModel = utils.responseModelUnexpectedErrorHandler(e);
+			responseModel = Utils.responseModelUnexpectedErrorHandler(e);
 		}
 		return responseModel;
 	}
@@ -70,7 +66,7 @@ public class TaskManagerController {
 		try {
 			responseModel = TaskDAO.getTaskByID(taskId);
 		} catch (Exception e) {
-			responseModel = utils.responseModelUnexpectedErrorHandler(e);
+			responseModel = Utils.responseModelUnexpectedErrorHandler(e);
 		}
 		return responseModel;
 	}
@@ -89,7 +85,7 @@ public class TaskManagerController {
 		try {
 			responseModel = TaskDAO.updateTask(actualTaskId,bodyRequest);
 		} catch (Exception e) {
-			responseModel = utils.responseModelUnexpectedErrorHandler(e);
+			responseModel = Utils.responseModelUnexpectedErrorHandler(e);
 		}
 		return responseModel;
 	}
@@ -106,7 +102,7 @@ public class TaskManagerController {
 		try {
 			responseModel = TaskDAO.deleteTask(taskId);
 		} catch (Exception e) {
-			responseModel = utils.responseModelUnexpectedErrorHandler(e);
+			responseModel = Utils.responseModelUnexpectedErrorHandler(e);
 		}
 		return responseModel;
 	}
