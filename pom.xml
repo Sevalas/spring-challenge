@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>svalencia</groupId>
 	<artifactId>desafio-mantenedor</artifactId>
-	<version>0.1.0</version>
+	<version>v1.0.0</version>
 	<name>desafio-mantenedor</name>
 	<description>Desafio mantenedor de tareas, Back</description>
 	<properties>
