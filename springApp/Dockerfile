@@ -1,6 +1,4 @@
 FROM maven:3-jdk-8-slim as build
-COPY .mvn .mvn
-COPY mvnw .
 COPY pom.xml .
 COPY src src
 
