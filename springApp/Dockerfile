@@ -6,4 +6,4 @@ RUN mvn package
 
 FROM openjdk:8-jdk-alpine
 COPY --from=build target/*.jar app.jar
-CMD [ "sh", "-c", "java $JAVA_OPTS -Djava.security.egd=file:/dev/./urandom -jar /app.jar" ]
+CMD [ "sh", "-c", "java $JAVA_OPTS -Dserver.port=$PORT -Djava.security.egd=file:/dev/./urandom -jar /app.jar" ]
