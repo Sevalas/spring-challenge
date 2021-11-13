@@ -3,11 +3,20 @@
 
 This back end application is a challenge about the creation of a task manager in Java.
 
+### NOW WITH DOCKER CONTAINERIZED AND CLOUD DEPLOYMENT IN HEROKU!!
+
+With the Heroku deployment you can visit the Swagger documentation-ui through this url:
+
+[api-spring-challenge.herokuapp.com/swagger-ui.html](https://api-spring-challenge.herokuapp.com/swagger-ui.html)
+_(the loading time until the page loads may take long if the application has not been deployed recently)_
+
 ## Features
 
-- Swagger-ui interface
+- Swagger-ui interfaced
 - Api rest Crud
 - Code with unit testing
+- Docker Containerization
+- Heroku deployment configuration
 
 ## Tech:
 - Java 8
@@ -16,23 +25,34 @@ This back end application is a challenge about the creation of a task manager in
 - Swagge2 3.0.0
 - Jackson 2.13.0
 - Junit
+- Docker preconfigured file
+- Heroku preconfigured file
 
 ## Installation
 
-Clone and resolve/install maven dependencies
+
+Clone the source code
 ```sh
 git clone https://github.com/Sevalas/spring-challenge.git
-cd spring-challenge
-mvn install
+cd spring-challenge/springApp
 ```
-To execute application, in parent the directory
+### To execute the application from spring app directly:
+Resolve/install maven dependencies and run spring-boot start command
 ```sh
+mvn install or mvn package
 mvn spring-boot:run
 ```
+### To execute the application from Docker image:
+With Docker installed in the system, build the image with Dockerfile instructions and then run it
+```sh
+docker build -t spring-app/desafio-mantenedor .
+docker run -p 8080:8080 spring-app/desafio-mantenedor
+```
+
 
 ## Usage
 
-The deployament default host is http://localhost:8080/.
+The deployment default host is http://localhost:8080/.
 While the application is running, we can use five different endpoints:
 - [POST]{{host}}/task-manager/add-task
 - [GET]{{host}}/task-manager/get-task-list
@@ -40,7 +60,7 @@ While the application is running, we can use five different endpoints:
 - [PUT]{{host}}/task-manager/update-task/{task-id}
 - [DELETE]{{host}}/task-manage/delete-task/{task-id}
 
-✨**With Swagger we can use the doccumentation ui throug this url**✨
+✨**With Swagger we can use the documentation-ui through this url**✨
 [{{host}}/swagger-ui.html](http://localhost:8080/swagger-ui.html)
 
 The Interface of a task in this application is:
@@ -67,7 +87,7 @@ Example of json body request to add or update a task:
 ```
 ## Considerations
 
-This application have only runtime persistence, no db connections, however, a constant tasks list are initialize with the application for the testings reason.
+This application has only runtime persistence, no db connections, however, a constant tasks list are initialize with the application for the testings reason.
 
 ## Thanks for use this application, All feedback is highly appreciated
 
